@@ -25,7 +25,13 @@ I used the first 2000 entries in the dataset to train the model. You can edit th
 
 ### Accuracy
 I then ran a test on the accuracy of the model using TextBlob's accuracy tool, in `test.py`. To do this, I seletected 500 lines in an arbitrary location (not part of the training dataset) in the wiki dataset. This location can be changed by editing the for loop's bounds at line 41. The results of the test are shown below. 
+
 ```
 Running test...
 0.824
 ```
+
+Afterwards, I generated texts from OpenAI's playground, which I entered into the program. Here are a couple observations:
+- Using a less advanced model, such as `text-curie-001` rather than `text-davinci-003`, tended to yield more accurate guesses. Advanced text generation such as davinci-003 seems to be capable of replicating human text somewhat well.
+- Making the temperature (randomness) of the generation lower also tended to lead to more accurate guesses
+- Using my own essays, the program found most to be human.
