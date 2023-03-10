@@ -47,16 +47,20 @@ def processWikiData(dict):
     temp.append((dict["Bot"], 'ai'))
     return temp
 
+# creates training dataset
 train = []
 
+# adds every set to the training dataset
 for dataSet in wikiData:
     train += processWikiData(dataSet)
 
 system('clear')
 print("Training model...")
 
+# trains model
 cl = NaiveBayesClassifier(train)
 
+# saves model into a file
 with open('../models/textblobmodel.pkl', 'wb') as f:
     pickle.dump(cl, f)
 
