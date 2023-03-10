@@ -9,7 +9,7 @@ system('clear')
 print("Fetching model...")
 
 # gets the model
-with open("models/textblobmodel", "rb") as file:
+with open("../models/textblobmodel", "rb") as file:
     model = pickle.load(file)
 
 # gets the data
