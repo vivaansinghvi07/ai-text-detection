@@ -61,7 +61,7 @@ print("Training model...")
 cl = NaiveBayesClassifier(train)
 
 # saves model into a file
-with open('../models/textblobmodel.pkl', 'wb') as f:
+with open('models/textblobmodel.pkl', 'wb') as f:
     pickle.dump(cl, f)
 
 print("Model Saved.")
