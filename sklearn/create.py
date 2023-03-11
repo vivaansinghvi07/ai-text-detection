@@ -64,7 +64,7 @@ with open("datasets/GPT-wiki-intro.csv") as f:
         wikiDataWords.append(process(row["generated_intro"], stopWords))
         wikiDataResult.append('ai')
         
-
+        # keeps count
         count += 1
         if count == DATACOUNT:
             break
