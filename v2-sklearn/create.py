@@ -9,7 +9,6 @@ from os import system
 # gets sklearn and needed packages
 import sklearn 
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 # get stopwords from nltk
 """
@@ -19,9 +18,6 @@ nltk.download(['stopwords'])
 system('clear')
 print("Getting data...")
 
-# creates a vectorizer
-vectorizer = TfidfVectorizer()
-
 # how many lines are read and put into the model
 DATACOUNT = 50000
 
@@ -29,7 +25,7 @@ DATACOUNT = 50000
 wikiDataWords, wikiDataResult = template.getWikiData(0, DATACOUNT)
 
 # transforms data
-wikiDataWords = vectorizer.fit_transform(wikiDataWords)
+wikiDataWords = template.vectorize(wikiDataWords)
 
 # creates model
 classifier = MultinomialNB()
