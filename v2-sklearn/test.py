@@ -1,6 +1,3 @@
-# gets create file that i made ( for the process method )
-import create
-
 # import packages
 import csv
 import pickle
@@ -11,4 +8,14 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # creates test arrays
-wikiDataTest = 
+wikiDataTestX = []
+wikiDataTestY = []
+
+with open("datasets/GPT-wiki-intro.csv", "r") as f:
+    # creates reader 
+    reader = csv.DictReader(f)
+
+    for line in list(reader)[:2]:
+        print(line)
+
+
