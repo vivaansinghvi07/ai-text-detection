@@ -57,6 +57,10 @@ template.clprint("Saving model...")
 with open('models/sklearnmodel.pkl', "wb") as f:
     pickle.dump(classifier, f)
 
+# saves vectorizer
+with open('models/sklearnvectorizer.pkl', 'wb') as f:
+    pickle.dump(vectorizer, f)
+
 template.clprint("Testing model...")
 
 # runs accuracy test
