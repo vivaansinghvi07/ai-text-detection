@@ -12,19 +12,19 @@ This machine learning model will attempt to differnetiate between human and AI-w
 - Run `create.py` on either the textblob or ___ folder to generate your model
 - Then, you can test accuracy using `test.py` or mess with the bot using ____
 
-## Datasets
+## Datasets Used
 - [GPT Wiki Intro](https://huggingface.co/datasets/aadityaubhat/GPT-wiki-intro)
 
 
-## Naive Bayes Classifier with TextBlob
+## Naive Bayes Classifier with TextBlob (version 1)
 
-Files used here will be visible in the `textblob` folder
+Files used here will be visible in the `v1-textblob` folder.
 
 ### Creation
 I used the first 2000 entries in the dataset to train the model. You can edit the number of entries used at line 21. In each entry, I selected the wikipedia intro and the generated intro to teach the model which was which. This is visible in `create.py`. After creating and training the model, the program pickles it into a file (too large to be put on GitHub).
 
 ### Accuracy
-I then ran a test on the accuracy of the model using TextBlob's accuracy tool, in `test.py`. To do this, I seletected 500 lines in an arbitrary location (not part of the training dataset) in the wiki dataset. This location can be changed by editing the for loop's bounds at line 41. The results of the test are shown below. 
+I then ran a test on the accuracy of the model using TextBlob's accuracy tool, in `test.py`. To do this, I seletected 500 lines in an arbitrary location (not part of the training dataset, namely lines 20500-20999) in the wiki dataset. This location can be changed by editing the for loop's bounds at line 41. The results of the test are shown below. 
 
 ```
 Running test...
@@ -35,3 +35,20 @@ Afterwards, I generated texts from OpenAI's playground, which I entered into the
 - Using a less advanced model, such as `text-curie-001` rather than `text-davinci-003`, tended to yield more accurate guesses. Advanced text generation such as davinci-003 seems to be capable of replicating human text somewhat well.
 - Making the temperature (randomness) of the generation lower also tended to lead to more accurate guesses
 - Using my own essays, the program found most to be human.
+
+## Naive Bayes Classifier with SKLearn (version 2)
+
+Due to the massive memory usage of TextBlob, I decided to find another way to do the project. Files used here will be visible in the `v2-sklearn` folder.
+
+### Creation
+I used the first 50000 lines of the wiki dataset to train this model, again using the `wiki_intro` as the human data and the `generated_intro` as the AI intro. This is visible in `create.py`. The bounds for hte creation data can be changed within the function.
+
+### Accuracy
+I ran an accuracy test in the same place as the creation, using lines 50000 to 55000. The results are here:
+```
+The accuracy of the model is 0.7955.
+```
+The bounds of the testing data, as the creation data, can be changed within the program.
+
+## Conclusions
+While vastly more powerful in memory, my second version using sklearn lags behind my first version using textblob in accuracy.
