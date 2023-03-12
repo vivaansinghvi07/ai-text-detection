@@ -8,6 +8,8 @@ This machine learning model will attempt to differnetiate between human and AI-w
     ```
     $ pip install textblob
     $ pip install tensorflow
+    $ pip install scikit-learn
+    $ pip install nltk
     ```
 - Run `create.py` on either the textblob or ___ folder to generate your model
 - Then, you can test accuracy using `test.py` or mess with the bot using ____
