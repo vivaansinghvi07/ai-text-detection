@@ -16,6 +16,7 @@ This machine learning model will attempt to differnetiate between human and AI-w
 
 ## Datasets Used
 - [GPT Wiki Intro](https://huggingface.co/datasets/aadityaubhat/GPT-wiki-intro)
+- [AI-Generated Essays](https://github.com/vivaansinghvi07/ai-essay-dataset) (made by me using OpenAI's API)
 
 
 ## Naive Bayes Classifier with TextBlob (version 1)
