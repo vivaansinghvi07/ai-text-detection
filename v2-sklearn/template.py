@@ -1,12 +1,10 @@
 import csv
+from os import system
 
 # imports nltk and everything else needed 
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-
-# import vectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 """ -- This is here in case it is needed when the repo is cloned or something
 nltk.download(['stopwords'])
@@ -54,7 +52,7 @@ def getWikiData(lowerCount, upperCount):
     # return generated lists
     return [words, result]
 
-# vectorizes data
-def vectorize(textArr):
-    vectorizer = TfidfVectorizer()
-    return vectorizer.fit_transform(textArr)
+# clear console and print
+def print(prompt):
+    system('clear')
+    print(prompt)
