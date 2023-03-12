@@ -9,6 +9,7 @@ import pickle
 import sklearn 
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import accuracy_score
 
 
 # get stopwords from nltk
@@ -55,3 +56,6 @@ with open('models/sklearnmodel.pkl', "wb") as f:
 
 template.print("Testing model...")
 
+# runs accuracy test
+testPredictedY = classifier.predict(testDataX)
+print("The accuracy of the model is " + str(accuracy_score(testDataY, testPredictedY)) + ".")
