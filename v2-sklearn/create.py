@@ -26,11 +26,11 @@ template.clprint("Getting data...")
 trainDataX, trainDataY, testDataX, testDataY = [], [], [], []
 
 # how many lines are read and put into the model
-DATACOUNT = 500
+DATACOUNT = 50000
 
 # gets the data from the wiki
 wikiDataTrainX, wikiDataTrainY = template.getWikiData(0, DATACOUNT)
-wikiDataTestX, wikiDataTestY = template.getWikiData(DATACOUNT, DATACOUNT + 100)
+wikiDataTestX, wikiDataTestY = template.getWikiData(DATACOUNT, DATACOUNT + 5000)
 
 # puts data into train and test
 trainDataX += wikiDataTrainX
