@@ -2,7 +2,6 @@
 import template
 
 # import pacakages
-import csv
 import pickle
 
 # gets sklearn and needed packages
@@ -10,10 +9,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
-
-# gets reshaping from numpy
-from numpy import reshape
-
 
 # get stopwords from nltk
 """

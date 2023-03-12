@@ -2,7 +2,6 @@ import csv
 from os import system
 
 # imports nltk and everything else needed 
-import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
