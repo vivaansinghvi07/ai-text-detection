@@ -53,6 +53,6 @@ def getWikiData(lowerCount, upperCount):
     return [words, result]
 
 # clear console and print
-def print(prompt):
+def clprint(prompt):
     system('clear')
     print(prompt)
