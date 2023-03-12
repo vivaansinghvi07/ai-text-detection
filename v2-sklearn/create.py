@@ -36,7 +36,7 @@ dataX += wikiDataX
 dataY += wikiDataY
 
 # splits data
-trainDataX, testDataX, trainDataY, testDataY = train_test_split(dataX, dataY, test_size=0.1, random_state=12) # random state for replicability
+trainDataX, testDataX, trainDataY, testDataY = train_test_split(dataX, dataY, test_size=0.2, random_state=12) # random state for replicability
 
 # transforms data
 vectorizer = TfidfVectorizer()

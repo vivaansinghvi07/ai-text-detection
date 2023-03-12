@@ -41,12 +41,12 @@ Afterwards, I generated texts from OpenAI's playground, which I entered into the
 Due to the massive memory usage of TextBlob, I decided to find another way to do the project. Files used here will be visible in the `v2-sklearn` folder.
 
 ### Creation
-I used the first 50000 lines of the wiki dataset to train this model, again using the `wiki_intro` as the human data and the `generated_intro` as the AI intro. This is visible in `create.py`. The bounds for hte creation data can be changed within the function.
+I used the first 100000 lines of the wiki dataset to train and test this model, again using the `wiki_intro` as the human data and the `generated_intro` as the AI intro. One-fifth of the model was used to test the dataset. This is visible in `create.py`. The bounds for the creation data can be changed within the function.
 
 ### Accuracy
-I ran an accuracy test in the same place as the creation, using lines 50000 to 55000. The results are here:
+I ran an accuracy test using the test data. The results are here:
 ```
-The accuracy of the model is 0.76015.
+The accuracy of the model is 0.76085.
 ```
 The bounds of the testing data, as the creation data, can be changed within the program.
 
