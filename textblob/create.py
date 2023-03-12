@@ -20,25 +20,18 @@ wikiData = []
 # controls the amount of data I want from the wiki
 wikiDataCount = 2000
 
-count = 0
-
 system('clear')
 print("Importing data...")
 
 # train with https://huggingface.co/datasets/aadityaubhat/GPT-wiki-intro
 with open("datasets/GPT-wiki-intro.csv") as f:
     reader = csv.DictReader(f)
-    for row in reader:
+    for row in list(reader)[:wikiDataCount]:
         # creates a dictionary with only the texts we want
         temp = {"Human": row["wiki_intro"], "Bot": row["generated_intro"]}
         
         # adds the dictionary to the array
         wikiData.append(temp)
-
-        # checks count limit
-        count += 1
-        if count == wikiDataCount:
-            break
 
 # populate train data with wiki data
 def processWikiData(dict):
