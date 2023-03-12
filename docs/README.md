@@ -46,7 +46,7 @@ I used the first 50000 lines of the wiki dataset to train this model, again usin
 ### Accuracy
 I ran an accuracy test in the same place as the creation, using lines 50000 to 55000. The results are here:
 ```
-The accuracy of the model is 0.7955.
+The accuracy of the model is 0.76015.
 ```
 The bounds of the testing data, as the creation data, can be changed within the program.
 
