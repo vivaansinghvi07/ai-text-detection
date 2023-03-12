@@ -1,21 +1,28 @@
+# import template function
+import template
+
 # import packages
 import csv
 import pickle
 
 # gets sklearn and needed things
 import sklearn
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import accuracy_score
+
+# sets the bounds for data
+LOWERBOUND = 60000
+UPPERBOUND = 65000
 
 # creates test arrays
-wikiDataTestX = []
-wikiDataTestY = []
+wikiDataTestX, wikiDataTestY = template.getWikiData(LOWERBOUND, UPPERBOUND)
 
-with open("datasets/GPT-wiki-intro.csv", "r") as f:
-    # creates reader 
-    reader = csv.DictReader(f)
+# obtains model
+with open("models/sklearnmodel.pkl", "rb") as f:
+    model = pickle.load(f)
 
-    for line in list(reader)[:2]:
-        print(line)
+# vectorizes data
+wikiDataTestX = template.vectorize(wikiDataTestX)
 
-
+# evaluates accuracy
+wikiDataModelY = model.predict(wikiDataTestX)
+print(accuracy_score(wikiDataTestY, wikiDataModelY))
