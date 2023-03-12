@@ -6,7 +6,7 @@ import csv
 import pickle
 
 # gets sklearn and needed packages
-import sklearn 
+from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
@@ -23,20 +23,20 @@ nltk.download(['stopwords'])
 template.clprint("Getting data...")
 
 # array for train data and test data
-trainDataX, trainDataY, testDataX, testDataY = [], [], [], []
+dataX, dataY = [], []
 
 # how many lines are read and put into the model
-DATACOUNT = 50000
+DATACOUNT = 100000
 
 # gets the data from the wiki
-wikiDataTrainX, wikiDataTrainY = template.getWikiData(0, DATACOUNT)
-wikiDataTestX, wikiDataTestY = template.getWikiData(DATACOUNT, DATACOUNT + 5000)
+wikiDataX, wikiDataY = template.getWikiData(0, DATACOUNT)
 
 # puts data into train and test
-trainDataX += wikiDataTrainX
-testDataX += wikiDataTestX
-trainDataY += wikiDataTrainY
-testDataY += wikiDataTestY
+dataX += wikiDataX
+dataY += wikiDataY
+
+# splits data
+trainDataX, testDataX, trainDataY, testDataY = train_test_split(dataX, dataY, test_size=0.1, random_state=12) # random state for replicability
 
 # transforms data
 vectorizer = TfidfVectorizer()
