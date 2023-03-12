@@ -51,6 +51,22 @@ def getWikiData(lowerCount, upperCount):
     # return generated lists
     return [words, result]
 
+# gets data from the generated AI essays
+def getAIEssayData(lowerCount, upperCount):
+    # two empty arrays for words and results
+    words, results = [], []
+
+    # accesses the file
+    with open("datasets.ai-essays.txt", "r") as f:
+
+        # appends the line and says its ai
+        words.append(process(f.readline()))
+        results.append('ai')
+
+    # return generated arrays
+    return [words, results]
+
+
 # clear console and print
 def clprint(prompt):
     system('clear')
