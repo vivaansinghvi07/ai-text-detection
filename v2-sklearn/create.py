@@ -17,12 +17,9 @@ nltk.download(['stopwords'])
 
 template.clprint("Getting data...")
 
-# array for train data and test data
-dataX, dataY = [], []
-
 # how many lines are read and put into the model
-WIKIDATACOUNT = 5400
-AIDATACOUNT = 2700
+WIKIDATACOUNT = 5400    # dataset size: about 150000
+AIDATACOUNT = 2700      # dataset size: about 2800
 
 # gets the data from the wiki
 wikiDataX, wikiDataY = template.getWikiData(0, WIKIDATACOUNT)
@@ -32,9 +29,9 @@ aiDataX, aiDataY = template.getAIEssayData(0, AIDATACOUNT)
 
 # gets data from human blog posts 
 
-# puts data into train and test
-dataX += wikiDataX + aiDataX
-dataY += wikiDataY + aiDataY
+# puts data into the overall arrays
+dataX = wikiDataX + aiDataX
+dataY = wikiDataY + aiDataY
 
 # splits data
 trainDataX, testDataX, trainDataY, testDataY = train_test_split(dataX, dataY, test_size=0.2, random_state=12) # random state for replicability
