@@ -38,6 +38,9 @@ def getWikiData(lowerCount, upperCount):
         # creates reader
         reader = csv.DictReader(f)
 
+        # counter
+        count = 0
+
         # iterates through reader
         for line in list(reader)[lowerCount:upperCount]:
 
@@ -45,8 +48,11 @@ def getWikiData(lowerCount, upperCount):
             words.append(process(line["wiki_intro"]))
             result.append('human')
 
-            words.append(process(line["generated_intro"]))
-            result.append('ai')
+            count += 1
+            
+            if not count % 2:
+                words.append(process(line["generated_intro"]))
+                result.append('ai')
             
 
     # return generated lists
