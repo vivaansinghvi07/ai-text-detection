@@ -21,14 +21,20 @@ template.clprint("Getting data...")
 dataX, dataY = [], []
 
 # how many lines are read and put into the model
-DATACOUNT = 100000
+WIKIDATACOUNT = 5400
+AIDATACOUNT = 2700
 
 # gets the data from the wiki
-wikiDataX, wikiDataY = template.getWikiData(0, DATACOUNT)
+wikiDataX, wikiDataY = template.getWikiData(0, WIKIDATACOUNT)
+
+# gets data from my generated essays 
+aiDataX, aiDataY = template.getAIEssayData(0, AIDATACOUNT)
+
+# gets data from human blog posts 
 
 # puts data into train and test
-dataX += wikiDataX
-dataY += wikiDataY
+dataX += wikiDataX + aiDataX
+dataY += wikiDataY + aiDataY
 
 # splits data
 trainDataX, testDataX, trainDataY, testDataY = train_test_split(dataX, dataY, test_size=0.2, random_state=12) # random state for replicability
