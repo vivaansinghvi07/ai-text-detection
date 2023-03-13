@@ -23,7 +23,7 @@ def process(str):
 
     # adds word to output if its a word and if its not a stopword
     for word in words:
-        if word.isalpha() and word not in stopWords:
+        if word.isalpha():
             output += word + " "
     return output
 
@@ -37,6 +37,9 @@ def getWikiData(lowerCount, upperCount):
         # creates reader
         reader = csv.DictReader(f)
 
+        # creates a counter
+        count = 0
+
         # iterates through reader
         for line in list(reader)[lowerCount:upperCount]:
 
@@ -45,8 +48,12 @@ def getWikiData(lowerCount, upperCount):
             result.append('human')
 
             # get AI data
-            words.append(process(line["generated_intro"]))
-            result.append('ai')
+            if not count % 2:
+                words.append(process(line["generated_intro"]))
+                result.append('ai')
+            
+            # adds to count
+            count += 1
 
     # return generated lists
     return [words, result]
@@ -57,11 +64,15 @@ def getAIEssayData(lowerCount, upperCount):
     words, results = [], []
 
     # accesses the file
-    with open("datasets.ai-essays.txt", "r") as f:
+    with open("datasets/ai-essays.txt", "r") as f:
 
-        # appends the line and says its ai
-        words.append(process(f.readline()))
-        results.append('ai')
+        # goes through every line
+        for line in list(f.readlines())[lowerCount:upperCount]:
+
+            # appends the line and says its ai
+            words.append(process(line.strip("\n")))
+            results.append('ai')
+
 
     # return generated arrays
     return [words, results]
