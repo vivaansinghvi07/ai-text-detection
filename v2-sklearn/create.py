@@ -65,4 +65,4 @@ template.clprint("Testing model...")
 
 # runs accuracy test
 testPredictedY = classifier.predict(testDataVecX)
-template.clprint("The accuracy of the model is " + str(accuracy_score(testDataY, testPredictedY)) + ".")
+template.clprint("The accuracy of the model is " + str(round(accuracy_score(testDataY, testPredictedY), 4)) + ".")
