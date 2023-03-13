@@ -17,6 +17,7 @@ This machine learning model will attempt to differnetiate between human and AI-w
 ## Datasets Used
 - [GPT Wiki Intro](https://huggingface.co/datasets/aadityaubhat/GPT-wiki-intro)
 - [AI-Generated Essays](https://github.com/vivaansinghvi07/ai-essay-dataset) (made by me using OpenAI's API)
+- [FeedBack Price Essays](https://www.kaggle.com/datasets/yujikomi/feedback-price-datasets-with-essay-text?select=train_2021_cleaned.csv)
 
 
 ## Naive Bayes Classifier with TextBlob (version 1)
@@ -48,6 +49,7 @@ Visible in `create.py` and `template.py`, I used data from three datasets:
 - Wiki-Intro: I read the first 5400 lines and used every other AI entry and every human entry
 - AI Essays: I used the first 2700 essays
 - Human Essays: I used the first 2700 essays
+
 Then, this data was split into training and testing data using sklearn's `train_test_split()` function.
 
 ### Accuracy
@@ -59,7 +61,7 @@ The bounds of the testing data, as the creation data, can be changed within the 
 
 Afterwards, when testing with essays written by me and several other bots, I saw somewhat consistent results, except some human essyas were characterized to be AI-written. This is possibly due to the informaility of some of the human essays in the training dataset.
 
-With more data, which this model can definitely handle, the accuracy may be improved.
+With more data, which this model can definitely handle, the accuracy in real applications may be improved.
 
 ## Conclusions
 While vastly more efficient in memory, my second version using sklearn lags behind my first version using textblob in accuracy. Regardless, with the advancement of artificial intelligence, it is or soon will be very hard to discern between AI-written and human-written text.
