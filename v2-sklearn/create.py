@@ -18,7 +18,7 @@ nltk.download(['stopwords'])
 template.clprint("Getting data...")
 
 # how many lines are read and put into the model
-WIKIDATACOUNT = 2700    # dataset size: about 150000
+WIKIDATACOUNT = 5400    # dataset size: about 150000
 AIDATACOUNT = 2700      # dataset size: about 2800
 HUMANDATACOUNT = 2700   # dataset size: about 4000 
 
