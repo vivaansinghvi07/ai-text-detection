@@ -27,6 +27,7 @@ def process(str):
             output += word + " "
     return output
 
+# gets data from the wiki-intro dataset
 def getWikiData(lowerCount, upperCount):
     # two empty arrays for the words and the results
     words, result = [], []
@@ -37,9 +38,6 @@ def getWikiData(lowerCount, upperCount):
         # creates reader
         reader = csv.DictReader(f)
 
-        # creates a counter
-        count = 0
-
         # iterates through reader
         for line in list(reader)[lowerCount:upperCount]:
 
@@ -47,13 +45,9 @@ def getWikiData(lowerCount, upperCount):
             words.append(process(line["wiki_intro"]))
             result.append('human')
 
-            # get AI data
-            if not count % 2:
-                words.append(process(line["generated_intro"]))
-                result.append('ai')
+            words.append(process(line["generated_intro"]))
+            result.append('ai')
             
-            # adds to count
-            count += 1
 
     # return generated lists
     return [words, result]
@@ -75,6 +69,44 @@ def getAIEssayData(lowerCount, upperCount):
 
 
     # return generated arrays
+    return [words, results]
+
+# gets data from the feedbackprice essays dataset
+def getHumanEssays(lowerCount, upperCount):
+    # empty arrays for output
+    words, results = [], []
+
+    # generates sets for the huamn written text
+    essays = []
+
+    # access the file
+    with open("datasets/feedback-essays.csv", "r") as f:
+
+        # makes a reader
+        reader = csv.DictReader(f)
+
+        # initial values
+        lines = list(reader)
+        id = lines[0]["essay_id"]
+        essay = lines[0]["discourse_text"]
+
+        # goes through every line
+        for line in lines[1:]:
+
+            # if the essay id is the same, add it to the orignial
+            # otherwise, create a new essay
+            if line["essay_id"] == id:
+                essay += " " + line["discourse_text"]
+            else:
+                id = line["essay_id"]
+                essays.append(essay)
+                essay = line["discourse_text"]
+
+        # adds data to output
+        for essay in essays[lowerCount:upperCount]:
+            words.append(process(essay))
+            results.append('human')
+
     return [words, results]
 
 
