@@ -44,14 +44,22 @@ Afterwards, I generated texts from OpenAI's playground, which I entered into the
 Due to the massive memory usage of TextBlob, I decided to find another way to do the project. Files used here will be visible in the `v2-sklearn` folder.
 
 ### Creation
-I used the first 100000 lines of the wiki dataset to train and test this model, again using the `wiki_intro` as the human data and the `generated_intro` as the AI intro. One-fifth of the model was used to test the dataset. This is visible in `create.py`. The bounds for the creation data can be changed within the function.
+Visible in `create.py` and `template.py`, I used data from three datasets:
+- Wiki-Intro: I read the first 5400 lines and used every other AI entry and every human entry
+- AI Essays: I used the first 2700 essays
+- Human Essays: I used the first 2700 essays
+Then, this data was split into training and testing data using sklearn's `train_test_split()` function.
 
 ### Accuracy
 I ran an accuracy test using the test data. The results are here:
 ```
-The accuracy of the model is 0.76085.
+The accuracy of the model is 0.7952.
 ```
 The bounds of the testing data, as the creation data, can be changed within the program.
 
+Afterwards, when testing with essays written by me and several other bots, I saw somewhat consistent results, except some human essyas were characterized to be AI-written. This is possibly due to the informaility of some of the human essays in the training dataset.
+
+With more data, which this model can definitely handle, the accuracy may be improved.
+
 ## Conclusions
-While vastly more powerful in memory, my second version using sklearn lags behind my first version using textblob in accuracy.
+While vastly more efficient in memory, my second version using sklearn lags behind my first version using textblob in accuracy. Regardless, with the advancement of artificial intelligence, it is or soon will be very hard to discern between AI-written and human-written text.
