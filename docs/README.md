@@ -1,5 +1,5 @@
 # AI Text Detection
-This machine learning model will attempt to differnetiate between human and AI-written text. The model for my textblob implementation is not available due to its size. In hindsight, I probably should have been more optimal programming it, such as using text vectorization as I did in my second one, the sklearn model.
+This machine learning model will attempt to differentiate between human and AI-written text. The model for my textblob implementation is not available due to its size. In hindsight, I probably should have been more optimal programming it, such as using text vectorization as I did in my second one, the sklearn model.
 
 ## Setup
 - Start a python virtual runtime enviroment
