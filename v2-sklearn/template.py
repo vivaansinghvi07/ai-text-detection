@@ -107,6 +107,9 @@ def getHumanEssays(lowerCount, upperCount):
                 id = line["essay_id"]
                 essays.append(essay)
                 essay = line["discourse_text"]
+                
+        # adds final essay to essays
+        essays.append(essay)
 
         # adds data to output
         for essay in essays[lowerCount:upperCount]:
