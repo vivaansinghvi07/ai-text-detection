@@ -63,7 +63,7 @@ The accuracy of the model is 0.7733.
 ```
 The bounds of the testing data, as the creation data, can be changed within the program.
 
-Afterwards, when testing with essays written by me and several other bots, I saw somewhat consistent results, except some human essyas were characterized to be AI-written. This is possibly due to the informaility of some of the human essays in the training dataset.
+Afterwards, when testing with essays written by me and several other bots, I saw somewhat consistent results, except some of my essays were characterized to be AI-written.
 
 With more data, which this model can definitely handle, the accuracy in real applications may be improved.
 
