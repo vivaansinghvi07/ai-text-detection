@@ -17,7 +17,9 @@ This machine learning model will attempt to differentiate between human and AI-w
 ## Datasets Used
 - [GPT Wiki Intro](https://huggingface.co/datasets/aadityaubhat/GPT-wiki-intro)
 - [AI-Generated Essays](https://github.com/vivaansinghvi07/ai-essay-dataset) (made by me using OpenAI's API)
-- [FeedBack Price Essays](https://www.kaggle.com/datasets/yujikomi/feedback-price-datasets-with-essay-text?select=train_2021_cleaned.csv)
+- [LOCNESS Corpus](https://www.learnercorpusassociation.org/resources/tools/locness-corpus/)
+    - Credit given to the **Centre for English Corpus Linguistics (CECL), Université catholique de Louvain, Belgium**.
+    - Since this dataset cannot be released to the public without permission, it will not be visible in this repository.
 
 
 ## Naive Bayes Classifier with TextBlob (version 1)
@@ -44,18 +46,20 @@ Afterwards, I generated texts from OpenAI's playground, which I entered into the
 
 Due to the massive memory usage of TextBlob, I decided to find another way to do the project. Files used here will be visible in the `v2-sklearn` folder.
 
+I had originally used the [Feedback Price](https://www.kaggle.com/datasets/yujikomi/feedback-price-datasets-with-essay-text) dataset, but since most or all the essays were on a single topic, I switched to the LOCNESS corpus for more generalization and less bias.
+
 ### Creation
 Visible in `create.py` and `template.py`, I used data from three datasets:
-- Wiki-Intro: I read the first 5400 lines and used every other AI entry and every human entry
-- AI Essays: I used the first 2700 essays
-- Human Essays: I used the first 2700 essays
+- Wiki-Intro: I read the first 1200 lines and used every other AI entry and every human entry
+- AI Essays: I used the first 600 essays
+- Human Essays: I used the first 600 paragraphs of the LOCNESS Corpus's USARG.txt
 
-Then, this data was split into training and testing data using sklearn's `train_test_split()` function.
+Then, this data was split into training and testing data using sklearn's `train_test_split()` function. The size of my datasets was limited by the size of the LOCNESS corpus. The model can certainly handle being trained with vastly more data.
 
 ### Accuracy
 I ran an accuracy test using the test data. The results are here:
 ```
-The accuracy of the model is 0.7952.
+The accuracy of the model is 0.7733.
 ```
 The bounds of the testing data, as the creation data, can be changed within the program.
 
