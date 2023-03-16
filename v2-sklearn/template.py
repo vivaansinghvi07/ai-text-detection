@@ -77,47 +77,24 @@ def getAIEssayData(lowerCount, upperCount):
     # return generated arrays
     return [words, results]
 
-# gets data from the feedbackprice essays dataset
-def getHumanEssays(lowerCount, upperCount):
-    # empty arrays for output
+# gets human essays from the LOCNESS corpus
+def getHumanEssayData(lowerCount, upperCount):
+    # two empty arrays for words and results
     words, results = [], []
 
-    # generates sets for the huamn written text
-    essays = []
-
-    # access the file
-    with open("datasets/feedback-essays.csv", "r") as f:
-
-        # makes a reader
-        reader = csv.DictReader(f)
-
-        # initial values
-        lines = list(reader)
-        id = lines[0]["essay_id"]
-        essay = lines[0]["discourse_text"]
+    # accesses the file
+    with open("datasets/USARG.txt", "r") as f:
 
         # goes through every line
-        for line in lines[1:]:
+        for line in list(f.readlines())[lowerCount:upperCount]:
 
-            # if the essay id is the same, add it to the orignial
-            # otherwise, create a new essay
-            if line["essay_id"] == id:
-                essay += " " + line["discourse_text"]
-            else:
-                id = line["essay_id"]
-                essays.append(essay)
-                essay = line["discourse_text"]
-                
-        # adds final essay to essays
-        essays.append(essay)
-
-        # adds data to output
-        for essay in essays[lowerCount:upperCount]:
-            words.append(process(essay))
+            # appends the line and says its ai
+            words.append(process(line.strip("\n")))
             results.append('human')
 
-    return [words, results]
 
+    # return generated arrays
+    return [words, results]
 
 # clear console and print
 def clprint(prompt):
