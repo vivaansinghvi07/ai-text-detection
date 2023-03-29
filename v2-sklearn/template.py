@@ -1,16 +1,8 @@
 import csv
 from os import system
 
-# imports nltk and everything else needed 
-from nltk.corpus import stopwords
+# imports nltk and everything else needed
 from nltk.tokenize import word_tokenize
-
-""" -- This is here in case it is needed when the repo is cloned or something
-nltk.download(['stopwords'])
-"""
-
-# sets stopwords
-stopWords = set(stopwords.words('english'))
 
 # preprocessing
 def process(str):
